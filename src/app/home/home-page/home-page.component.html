@@ -1,0 +1,22 @@
+<div class="row" style="min-height: 100%;">
+    <div class="col-3">
+    </div>
+    <div class="col-6 mt-auto mb-auto">
+        <mat-card class="example-card">
+            <mat-card-title>Subir archivos</mat-card-title>
+            <mat-card-subtitle>Modulo de subida de archivos</mat-card-subtitle>
+            <mat-card-content>
+                <p class="text-light" *ngIf="hasFiles">{{file.name}}</p>
+                <p class="text-light" *ngIf="!hasFiles">No hay archivos seleccionados</p>
+                <button style="margin-left: auto; margin-right: auto;" mat-button (click)="archivo.click()">SUBIR ARCHIVOS CONCHATUMARE</button> 
+                <input #archivo type="file" style="display: none;" (change)="onFileSelect($event)">
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+              <button mat-button class="primary">Subir</button>
+              <button mat-button class="basic">Cancelar</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <div class="col-3"></div>
+</div>
