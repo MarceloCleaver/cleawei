@@ -1,18 +1,22 @@
     
-<div class="row">
+<div class="row navcontainer">
     <mat-toolbar>
         <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+           <a href = "home">
             <button mat-menu-item>
               <mat-icon>home</mat-icon>
               <span>Inicio</span>
             </button>
+          </a>
+            <a href = "perfil">
             <button mat-menu-item>
                 <mat-icon>account_circle</mat-icon>
                 <span>Cuenta</span>
               </button>
+            </a>
             <button mat-menu-item>
               <mat-icon>list</mat-icon>
               <span>Busqueda</span>
