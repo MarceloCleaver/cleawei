@@ -28,10 +28,10 @@
     </mat-card-content>
     
     <mat-card-actions>       
-        <a href = "register">
-            <button mat-button class="primary">Register</button>
+      <a [routerLink]="['/register']">
+            <button mat-button class="primary">Registrarse</button>
            </a>    
-           <a href = "olvidapass">
+           <a [routerLink]="['/olvidapass']">
             <button mat-button class="primary">¿Olvidaste tu contraseña?</button>
            </a>         
     </mat-card-actions>

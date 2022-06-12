@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cleawei-335fb"
+  },
+  "targets": {
+    "cleawei-335fb": {
+      "hosting": {
+        "proyecto": [
+          "cleawei-335fb"
+        ]
+      }
+    }
+  }
+}

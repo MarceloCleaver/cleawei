@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
+
+export interface fbFile {
+  carrera: string,
+  filename: string
+}
+
+
 
 @Component({
   selector: 'app-busqueda',
@@ -7,9 +15,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusquedaComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['carrera', 'filename', 'download'];
+  dataSource: fbFile[] = [];
+
+
+
+  constructor(
+    private fb: FirebaseService
+  ) { }
 
   ngOnInit(): void {
+    this.fb.getCollection('files').subscribe(
+      res => {
+        console.log(res);
+        this.dataSource = res;
+      }
+    );
+  }
+
+  downloadFile(link: string){
+    window.open(link);
   }
 
 }
+

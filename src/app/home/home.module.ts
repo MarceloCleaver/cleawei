@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { OlvidacontraComponent } from './olvidacontra/olvidacontra.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,11 +21,13 @@ import { OlvidacontraComponent } from './olvidacontra/olvidacontra.component';
     RegisterComponent,
     BusquedaComponent,
     OlvidacontraComponent
+    
   ],
   imports: [
     CommonModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
 
   ],
   exports: [
