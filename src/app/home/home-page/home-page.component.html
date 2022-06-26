@@ -1,56 +1,63 @@
-<div class="row" style="min-height: 100%;">
-    <div class="col-3 mt-auto mb-auto">
-      <mat-card class="example-card" style="margin-left: auto; margin-right: auto;" >
-        <mat-card-header >
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Biblioteca Online</mat-card-title>
-          <mat-card-subtitle>Proyecto departamento de informatica</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://media.resumen.cl/wp-content/uploads/2021/03/universidad-catolica-temuco-1400x788.80.jpg" alt="Edificio UCT">
-        <mat-card-content>
-          <p>
-            Sólo un texto de prueba, primeras versiones del proyecto saliendo a la luz.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button style="margin-left: auto; margin-right: auto;"  mat-button>ME GUSTA</button>
-          <button style="margin-left: auto; margin-right: auto;" mat-button>COMENTAR</button>
-        </mat-card-actions>
-      </mat-card>
-          
-
-    </div>
-
-
-    <div class="col-6 mt-auto mb-auto">
-        <mat-card class="test">
-            <mat-card-title>Subir archivos</mat-card-title>
-            <mat-card-subtitle>Modulo de subida de archivos</mat-card-subtitle>
-            <mat-card-content>
-                <p class="text-light" *ngIf="hasFiles">{{file.name}}</p>                
-                <p class="text-light" *ngIf="!hasFiles">No hay archivos seleccionados</p>
-                <mat-icon>cloud_upload</mat-icon>
-                <button style="margin-left: auto; margin-right: auto;" mat-button (click)="archivo.click()">SUBIR ARCHIVOS</button>           
-                 
-                <input #archivo type="file" style="display: none;" (change)="onFileSelect($event)">
-            </mat-card-content>
-            <mat-divider inset></mat-divider>
-            <mat-card-actions>
-              <button mat-button class="primary">Subir</button>
-              <button mat-button class="basic">Cancelar</button>
-            </mat-card-actions>
-          </mat-card>
-    </div>
-    <div class="col-3 mt-auto mb-auto">
+<div class="row w-100" style="min-height: 100%;">
+  <div class="col-3 mt-auto mb-auto">
     <mat-card class="example-card" style="margin-left: auto; margin-right: auto;" >
       <mat-card-header >
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Proximamente...</mat-card-title>
+        <mat-card-title>Biblioteca Online</mat-card-title>
+        <mat-card-subtitle>Proyecto departamento de informatica</mat-card-subtitle>
       </mat-card-header>
-
+      <img mat-card-image src="https://media.resumen.cl/wp-content/uploads/2021/03/universidad-catolica-temuco-1400x788.80.jpg" alt="Edificio UCT">
+      <mat-card-content>
+        <p>
+          Sólo un texto de prueba, primeras versiones del proyecto saliendo a la luz.
+        </p>
+      </mat-card-content>
       <mat-card-actions>
+        <button style="margin-left: auto; margin-right: auto;"  mat-button>ME GUSTA</button>
+        <button style="margin-left: auto; margin-right: auto;" mat-button>COMENTAR</button>
       </mat-card-actions>
     </mat-card>
+
+
   </div>
 
+
+  <div class="col-6 mt-auto mb-auto">
+      <mat-card class="test">
+          <mat-card-title>Subir archivos</mat-card-title>
+          <mat-card-subtitle>Modulo de subida de archivos</mat-card-subtitle>
+          <mat-card-content>
+              <p class="text-light" *ngIf="hasFiles">{{file.name}}</p>
+              <p class="text-light" *ngIf="!hasFiles">No hay archivos seleccionados</p>
+              <mat-icon>cloud_upload</mat-icon>
+              <button style="margin-left: auto; margin-right: auto;" mat-button (click)="archivo.click()">SELECCIONAR ARCHIVOS</button>
+              <input #archivo type="file" style="display: none;" (change)="onFileSelect($event)">
+          </mat-card-content>
+          <mat-divider inset></mat-divider>
+          <mat-card-actions>
+            <button mat-button class="primary" (click)="uploadFile(upload)" [disabled] = "!hasFiles">Subir</button>
+            <button mat-button class="basic">Cancelar</button>
+          </mat-card-actions>
+        </mat-card>
+  </div>
+  <div class="col-3 mt-auto mb-auto">
+  <mat-card class="example-card" style="margin-left: auto; margin-right: auto;" >
+    <mat-card-header >
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Proximamente...</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
 </div>
+
+</div>
+
+<ng-template #upload>
+<div align="center">
+  <mat-spinner mode = "determinate" [value]="progress"></mat-spinner>
+  <p>Subiendo archivo, favor no cerrar esta página</p>
+<button mat-raised-button color="primary" class="mt-2" [disabled]="progress !== 100" (click)="moveToFiles()"> Ir al archivo </button>
+</div>
+</ng-template>

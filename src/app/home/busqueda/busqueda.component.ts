@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 export interface fbFile {
   carrera: string,
-  filename: string
+  filename: string,
+  link: string
 }
 
 
@@ -13,11 +14,11 @@ export interface fbFile {
   templateUrl: './busqueda.component.html',
   styleUrls: ['./busqueda.component.css']
 })
-export class BusquedaComponent implements OnInit {
+export class BusquedaComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['carrera', 'filename', 'download'];
   dataSource: fbFile[] = [];
-
+  sub: any;
 
 
   constructor(
@@ -25,7 +26,7 @@ export class BusquedaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fb.getCollection('files').subscribe(
+    this.sub = this.fb.getCollection('files').subscribe(
       res => {
         console.log(res);
         this.dataSource = res;
@@ -33,9 +34,16 @@ export class BusquedaComponent implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+      this.sub.unsubscribe();
+  }
+
   downloadFile(link: string){
     window.open(link);
   }
+
+
+
 
 }
 
